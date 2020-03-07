@@ -7,14 +7,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.oreakintobi.oreakintobi.databinding.FilterItemBinding
 
 class FilterAdapter(
-    private var filters: List<Filter>,
+    private var filters: List<FilterElement>,
     private var context: Context
 ) : RecyclerView.Adapter<FilterAdapter.FilterViewHolder>() {
     private lateinit var binding: FilterItemBinding
 
     class FilterViewHolder(private val binding: FilterItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(data: Filter) {
+        fun bind(data: FilterElement) {
             binding.filter = data
         }
     }
