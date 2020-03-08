@@ -1,24 +1,22 @@
-// To parse the JSON, install kotlin's serialization plugin and do:
-//
-// val json   = Json(JsonConfiguration.Stable)
-// val filter = json.parse(Filter.serializer(), jsonString)
-
 package com.oreakintobi.oreakintobi
 
 import kotlinx.serialization.*
 import kotlinx.serialization.internal.StringDescriptor
 
-typealias Filter = ArrayList<FilterElement>
+@Serializable
+data class Filter(
+    val accounts: List<Account>
+)
 
 @Serializable
-data class FilterElement(
-    val id: String? = null,
-    val avatar: String? = null,
-    val fullName: String? = null,
-    val createdAt: String? = null,
-    val gender: Gender? = null,
-    val colors: List<Color>? = null,
-    val countries: List<Country>? = null
+data class Account(
+    val id: String,
+    val avatar: String,
+    val fullName: String,
+    val createdAt: String,
+    val gender: String,
+    val colors: List<Color>,
+    val countries: List<Country>
 )
 
 @Serializable(with = Color.Companion::class)
@@ -39,7 +37,6 @@ enum class Color(val value: String) {
             get() {
                 return StringDescriptor
             }
-
         override fun deserialize(decoder: Decoder): Color = when (decoder.decodeString()) {
             "Aquamarine" -> Aquamarine
             "Blue" -> Blue
@@ -53,7 +50,6 @@ enum class Color(val value: String) {
             "Yellow" -> Yellow
             else -> throw IllegalArgumentException()
         }
-
         override fun serialize(encoder: Encoder, obj: Color) {
             return encoder.encodeString(obj.value)
         }
@@ -75,7 +71,6 @@ enum class Country(val value: String) {
             get() {
                 return StringDescriptor
             }
-
         override fun deserialize(decoder: Decoder): Country = when (decoder.decodeString()) {
             "China" -> China
             "Colombia" -> Colombia
@@ -86,7 +81,6 @@ enum class Country(val value: String) {
             "South Africa" -> SouthAfrica
             else -> throw IllegalArgumentException()
         }
-
         override fun serialize(encoder: Encoder, obj: Country) {
             return encoder.encodeString(obj.value)
         }
@@ -103,13 +97,11 @@ enum class Gender(val value: String) {
             get() {
                 return StringDescriptor
             }
-
         override fun deserialize(decoder: Decoder): Gender = when (decoder.decodeString()) {
             "female" -> Female
             "male" -> Male
             else -> throw IllegalArgumentException()
         }
-
         override fun serialize(encoder: Encoder, obj: Gender) {
             return encoder.encodeString(obj.value)
         }

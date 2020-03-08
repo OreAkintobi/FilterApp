@@ -21,7 +21,13 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
+        multiDexEnabled true
+        compileOptions {
+            sourceCompatibility JavaVersion.VERSION_1_8
+            targetCompatibility JavaVersion.VERSION_1_8
+        }
     }
+
 
     buildTypes {
         release {
@@ -83,4 +89,17 @@ dependencies {
     // Serialization
     implementation "org.jetbrains.kotlinx:kotlinx-serialization-runtime:0.14.0"
 
+    //Download manager dependency
+    implementation 'com.mindorks.android:prdownloader:0.6.0'
+
+    //CSV parser library
+    implementation 'de.siegmar:fastcsv:1.0.3'
+
+    //Timber for Logging
+    implementation 'com.jakewharton.timber:timber:4.7.1'
+
+    // CI ImageView
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+    def multidex_version = "2.0.1" // Check this from the link
+    implementation "androidx.multidex:multidex:$multidex_version"
 }

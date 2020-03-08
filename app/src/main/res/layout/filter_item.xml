@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
@@ -6,76 +7,428 @@
     <data>
 
         <variable
-            name="filter"
-            type="com.oreakintobi.oreakintobi.FilterElement" />
+            name="filterList"
+            type="com.oreakintobi.oreakintobi.Account" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/filter_item"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
-            android:backgroundTint="#E1BEE7"
-            android:elevation="8dp"
-            app:cardCornerRadius="20dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            android:padding="10dp"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="8dp"
+            app:cardUseCompatPadding="true"
+            app:contentPadding="16dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:orientation="horizontal">
 
-                <TextView
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="16dp"
-                    android:textSize="20sp"
-                    tools:text="Gender" />
+                    android:gravity="center"
+                    android:orientation="vertical">
 
-                <HorizontalScrollView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="16dp"
-                    android:scrollbars="none">
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/smallimage"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp" />
 
-                    <LinearLayout
-                        android:id="@+id/colors"
+                    <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_margin="4dp"
-                        android:gravity="center"
-                        android:orientation="horizontal" />
-                </HorizontalScrollView>
+                        tools:text="Gender" />
 
-                <HorizontalScrollView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="16dp"
-                    android:scrollbars="none">
-
-                    <LinearLayout
-                        android:id="@+id/countries"
+                    <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_margin="4dp"
-                        android:gravity="center"
-                        android:orientation="horizontal"
-                        android:textSize="18sp"
-                        tools:text="Country" />
-                </HorizontalScrollView>
+                        android:text="@{filterList.gender}"
+                        android:textColor="#000000"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@{filterList.fullName}"
+                        android:textColor="#000000"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        tools:text="Odu Anthony" />
+
+                    <TextView
+                        android:id="@+id/showWhenTextUnavailable"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="NO COLOR FOUND"
+                        android:textSize="20dp"
+                        android:textStyle="bold"
+                        android:visibility="gone" />
+
+                    <LinearLayout
+                        android:id="@+id/colourLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp">
+
+                        <HorizontalScrollView
+                            android:id="@+id/horizontalScrollView"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:scrollbars="none">
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <de.hdodenhof.circleimageview.CircleImageView
+                                    android:id="@+id/button1"
+                                    android:layout_width="30dp"
+                                    android:layout_height="30dp" />
+
+                                <de.hdodenhof.circleimageview.CircleImageView
+                                    android:id="@+id/button2"
+                                    android:layout_width="30dp"
+                                    android:layout_height="30dp"
+                                    android:src="@color/colorPrimaryDark" />
+
+                                <de.hdodenhof.circleimageview.CircleImageView
+                                    android:id="@+id/button3"
+                                    android:layout_width="30dp"
+                                    android:layout_height="30dp"
+                                    android:src="@color/colorPrimaryDark" />
+
+                                <de.hdodenhof.circleimageview.CircleImageView
+                                    android:id="@+id/button4"
+                                    android:layout_width="30dp"
+                                    android:layout_height="30dp"
+                                    android:src="@color/colorPrimaryDark" />
+
+                                <de.hdodenhof.circleimageview.CircleImageView
+                                    android:id="@+id/button5"
+                                    android:layout_width="30dp"
+                                    android:layout_height="30dp"
+                                    android:src="@color/colorPrimaryDark" />
+
+                                <de.hdodenhof.circleimageview.CircleImageView
+                                    android:id="@+id/button6"
+                                    android:layout_width="30dp"
+                                    android:layout_height="30dp"
+                                    android:src="@color/colorPrimaryDark" />
+
+                                <de.hdodenhof.circleimageview.CircleImageView
+                                    android:id="@+id/button7"
+                                    android:layout_width="30dp"
+                                    android:layout_height="30dp"
+                                    android:src="@color/colorPrimaryDark" />
+
+                                <de.hdodenhof.circleimageview.CircleImageView
+                                    android:id="@+id/button8"
+                                    android:layout_width="30dp"
+                                    android:layout_height="30dp"
+                                    android:src="@color/colorPrimaryDark" />
+
+                                <de.hdodenhof.circleimageview.CircleImageView
+                                    android:id="@+id/button9"
+                                    android:layout_width="30dp"
+                                    android:layout_height="30dp"
+                                    android:src="@color/colorPrimaryDark" />
+
+                                <de.hdodenhof.circleimageview.CircleImageView
+                                    android:id="@+id/button10"
+                                    android:layout_width="30dp"
+                                    android:layout_height="30dp"
+                                    android:src="@color/colorPrimaryDark" />
+                            </LinearLayout>
+                        </HorizontalScrollView>
+                    </LinearLayout>
+
+
+                    <TextView
+                        android:id="@+id/showWhenCountryUnavailable"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="NO COUNTRY FOUND"
+                        android:textSize="20dp"
+                        android:textStyle="bold"
+                        android:visibility="gone" />
+
+                    <LinearLayout
+                        android:id="@+id/countryView"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="8dp">
+
+                        <HorizontalScrollView
+                            android:id="@+id/horizontalScrollView2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:scrollbars="none">
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+
+                                <RelativeLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="end"
+                                    android:layout_marginStart="4dp"
+                                    android:layout_marginBottom="4dp"
+                                    android:gravity="center">
+
+                                    <ImageView
+                                        android:id="@+id/num1"
+                                        android:layout_width="150dp"
+                                        android:layout_height="30dp"
+                                        android:background="@drawable/country_bg" />
+
+                                    <TextView
+                                        android:id="@+id/first"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_alignStart="@+id/num1"
+                                        android:layout_alignTop="@+id/num1"
+                                        android:layout_alignEnd="@+id/num1"
+                                        android:layout_alignBottom="@+id/num1"
+                                        android:gravity="center"
+                                        android:text="Nigeria"
+                                        android:textColor="#FFFFFF"
+                                        android:textStyle="bold" />
+                                </RelativeLayout>
+
+
+                                <RelativeLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="end"
+                                    android:layout_marginStart="4dp"
+                                    android:layout_marginBottom="4dp"
+                                    android:gravity="center">
+
+                                    <ImageView
+                                        android:id="@+id/num2"
+                                        android:layout_width="150dp"
+                                        android:layout_height="30dp"
+                                        android:background="@drawable/country_bg" />
+
+                                    <TextView
+                                        android:id="@+id/second"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_alignStart="@+id/num2"
+                                        android:layout_alignTop="@+id/num2"
+                                        android:layout_alignEnd="@+id/num2"
+                                        android:layout_alignBottom="@+id/num2"
+                                        android:gravity="center"
+                                        android:text="Nigeria"
+                                        android:textColor="#FFFFFF"
+                                        android:textStyle="bold" />
+                                </RelativeLayout>
+
+
+                                <RelativeLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="end"
+                                    android:layout_marginStart="4dp"
+                                    android:layout_marginBottom="4dp"
+                                    android:gravity="center">
+
+                                    <ImageView
+                                        android:id="@+id/num3"
+                                        android:layout_width="150dp"
+                                        android:layout_height="30dp"
+                                        android:background="@drawable/country_bg" />
+
+                                    <TextView
+                                        android:id="@+id/third"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_alignStart="@+id/num3"
+                                        android:layout_alignTop="@+id/num3"
+                                        android:layout_alignEnd="@+id/num3"
+                                        android:layout_alignBottom="@+id/num3"
+                                        android:gravity="center"
+                                        android:text="Nigeria"
+                                        android:textColor="#FFFFFF"
+                                        android:textStyle="bold" />
+                                </RelativeLayout>
+
+                                <RelativeLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="end"
+                                    android:layout_marginStart="4dp"
+                                    android:layout_marginBottom="4dp"
+                                    android:gravity="center">
+
+                                    <ImageView
+                                        android:id="@+id/num4"
+                                        android:layout_width="150dp"
+                                        android:layout_height="30dp"
+                                        android:background="@drawable/country_bg" />
+
+                                    <TextView
+                                        android:id="@+id/fourt"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_alignStart="@+id/num4"
+                                        android:layout_alignTop="@+id/num4"
+                                        android:layout_alignEnd="@+id/num4"
+                                        android:layout_alignBottom="@+id/num4"
+                                        android:gravity="center"
+                                        android:text="Nigeria"
+                                        android:textColor="#FFFFFF"
+                                        android:textStyle="bold" />
+                                </RelativeLayout>
+
+
+                                <RelativeLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="end"
+                                    android:layout_marginStart="4dp"
+                                    android:layout_marginBottom="4dp"
+                                    android:gravity="center">
+
+                                    <ImageView
+                                        android:id="@+id/num5"
+                                        android:layout_width="150dp"
+                                        android:layout_height="30dp"
+                                        android:background="@drawable/country_bg" />
+
+                                    <TextView
+                                        android:id="@+id/fivth"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_alignStart="@+id/num5"
+                                        android:layout_alignTop="@+id/num5"
+                                        android:layout_alignEnd="@+id/num5"
+                                        android:layout_alignBottom="@+id/num5"
+                                        android:gravity="center"
+                                        android:text="Nigeria"
+                                        android:textColor="#FFFFFF"
+                                        android:textStyle="bold" />
+                                </RelativeLayout>
+
+
+                                <RelativeLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="end"
+                                    android:layout_marginStart="4dp"
+                                    android:layout_marginBottom="4dp"
+                                    android:gravity="center">
+
+                                    <ImageView
+                                        android:id="@+id/num6"
+                                        android:layout_width="150dp"
+                                        android:layout_height="30dp"
+                                        android:background="@drawable/country_bg" />
+
+                                    <TextView
+                                        android:id="@+id/sixth"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_alignStart="@+id/num6"
+                                        android:layout_alignTop="@+id/num6"
+                                        android:layout_alignEnd="@+id/num6"
+                                        android:layout_alignBottom="@+id/num6"
+                                        android:gravity="center"
+                                        android:text="Nigeria"
+                                        android:textColor="#FFFFFF"
+                                        android:textStyle="bold" />
+                                </RelativeLayout>
+
+
+                                <RelativeLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="end"
+                                    android:layout_marginStart="4dp"
+                                    android:layout_marginBottom="4dp"
+                                    android:gravity="center">
+
+                                    <ImageView
+                                        android:id="@+id/num7"
+                                        android:layout_width="150dp"
+                                        android:layout_height="30dp"
+                                        android:background="@drawable/country_bg" />
+
+                                    <TextView
+                                        android:id="@+id/seventh"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_alignStart="@+id/num7"
+                                        android:layout_alignTop="@+id/num7"
+                                        android:layout_alignEnd="@+id/num7"
+                                        android:layout_alignBottom="@+id/num7"
+                                        android:gravity="center"
+                                        android:text="Nigeria"
+                                        android:textColor="#FFFFFF"
+                                        android:textStyle="bold" />
+                                </RelativeLayout>
+
+
+                                <RelativeLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="end"
+                                    android:layout_marginStart="4dp"
+                                    android:layout_marginBottom="4dp"
+                                    android:gravity="center">
+
+                                    <ImageView
+                                        android:id="@+id/num"
+                                        android:layout_width="150dp"
+                                        android:layout_height="30dp"
+                                        android:background="@drawable/country_bg" />
+
+                                    <TextView
+                                        android:id="@+id/eighth"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_alignStart="@+id/num"
+                                        android:layout_alignTop="@+id/num"
+                                        android:layout_alignEnd="@+id/num"
+                                        android:layout_alignBottom="@+id/num"
+                                        android:gravity="center"
+                                        android:text="Nigeria"
+                                        android:textColor="#FFFFFF"
+                                        android:textStyle="bold" />
+                                </RelativeLayout>
+                            </LinearLayout>
+                        </HorizontalScrollView>
+                    </LinearLayout>
+
+                </LinearLayout>
             </LinearLayout>
 
         </androidx.cardview.widget.CardView>
+    </RelativeLayout>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>
