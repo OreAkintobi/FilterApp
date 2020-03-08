@@ -1,4 +1,4 @@
-package com.oreakintobi.oreakintobi.ui
+package com.oreakintobi.oreakintobi.ui.filterview
 
 import android.Manifest
 import android.content.pm.PackageManager
@@ -16,10 +16,12 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.downloader.PRDownloader
 import com.downloader.PRDownloaderConfig
-import com.oreakintobi.oreakintobi.*
+import com.oreakintobi.oreakintobi.R
 import com.oreakintobi.oreakintobi.data.NetworkChecker.isNetworkAvailable
 import com.oreakintobi.oreakintobi.databinding.FragmentFilterBinding
+import com.oreakintobi.oreakintobi.entities.Account
 import com.oreakintobi.oreakintobi.repositories.FilterRepository
+import com.oreakintobi.oreakintobi.ui.DataLoadingListener
 import com.oreakintobi.oreakintobi.utils.hide
 import com.oreakintobi.oreakintobi.utils.show
 import com.oreakintobi.oreakintobi.utils.snackbar
@@ -27,8 +29,12 @@ import kotlinx.android.synthetic.main.fragment_filter.*
 
 private const val MY_PERMISSIONS_REQUEST_WRITE_STORAGE = 1
 
-class FilterFragment : Fragment(), DataLoadingListener {
-    private val viewModelFactory = FilterViewModelFactory(FilterRepository())
+class FilterFragment : Fragment(),
+    DataLoadingListener {
+    private val viewModelFactory =
+        FilterViewModelFactory(
+            FilterRepository()
+        )
     private val filterViewModel by lazy {
         ViewModelProvider(this, viewModelFactory).get(FilterViewModel::class.java)
     }
@@ -58,7 +64,10 @@ class FilterFragment : Fragment(), DataLoadingListener {
 
         filterViewModel.filters.observe(viewLifecycleOwner, Observer {
             it as ArrayList<Account>
-            adapter = FilterAdapter(it, requireContext()) {
+            adapter = FilterAdapter(
+                it,
+                requireContext()
+            ) {
                 view?.snackbar("Filter is Now Clickable")
             }
             binding.recyclerView.adapter = adapter

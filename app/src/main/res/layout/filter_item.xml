@@ -8,7 +8,7 @@
 
         <variable
             name="filterList"
-            type="com.oreakintobi.oreakintobi.Account" />
+            type="com.oreakintobi.oreakintobi.entities.Account" />
     </data>
 
     <RelativeLayout

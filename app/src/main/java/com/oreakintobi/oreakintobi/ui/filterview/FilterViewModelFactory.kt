@@ -1,4 +1,4 @@
-package com.oreakintobi.oreakintobi
+package com.oreakintobi.oreakintobi.ui.filterview
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -9,7 +9,9 @@ class FilterViewModelFactory(private val repository: FilterRepository) :
     @Suppress("unchecked_cast")
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(FilterViewModel::class.java)) {
-            return FilterViewModel(repository) as T
+            return FilterViewModel(
+                repository
+            ) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }

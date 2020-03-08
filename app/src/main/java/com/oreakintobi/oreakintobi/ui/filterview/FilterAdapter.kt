@@ -1,4 +1,4 @@
-package com.oreakintobi.oreakintobi
+package com.oreakintobi.oreakintobi.ui.filterview
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -6,7 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.oreakintobi.oreakintobi.R
 import com.oreakintobi.oreakintobi.databinding.FilterItemBinding
+import com.oreakintobi.oreakintobi.entities.Account
 
 class FilterAdapter(
     private var filtersList: List<Account>,
@@ -78,7 +80,9 @@ class FilterAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(context)
         val binding = FilterItemBinding.inflate(view)
-        return ViewHolder(binding)
+        return ViewHolder(
+            binding
+        )
     }
 
     override fun getItemCount(): Int {

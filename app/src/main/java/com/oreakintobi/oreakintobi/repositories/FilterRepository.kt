@@ -3,8 +3,8 @@ package com.oreakintobi.oreakintobi.repositories
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.google.gson.GsonBuilder
-import com.oreakintobi.oreakintobi.Account
-import com.oreakintobi.oreakintobi.Filter
+import com.oreakintobi.oreakintobi.entities.Account
+import com.oreakintobi.oreakintobi.entities.Filter
 import com.oreakintobi.oreakintobi.utils.DataUtils
 import okhttp3.Call
 import okhttp3.Callback

@@ -1,4 +1,4 @@
-package com.oreakintobi.oreakintobi
+package com.oreakintobi.oreakintobi.ui.filterview
 
 import android.os.Environment
 import android.util.Log
@@ -7,6 +7,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.downloader.OnDownloadListener
 import com.downloader.PRDownloader
+import com.oreakintobi.oreakintobi.entities.Account
 import com.oreakintobi.oreakintobi.repositories.FilterRepository
 import com.oreakintobi.oreakintobi.ui.DataLoadingListener
 import com.oreakintobi.oreakintobi.utils.DataUtils
