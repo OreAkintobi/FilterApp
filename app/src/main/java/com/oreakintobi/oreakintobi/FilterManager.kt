@@ -24,10 +24,6 @@ import java.io.File
 import java.io.FileReader
 
 class FilterManager {
-
-
-    /*Performing a IO operations will take time,
-       so it's safe to take it out of  the UI thread*/
     suspend fun readFile(file: File): CarOwnerList {
 
         val result = CarOwnerList()
