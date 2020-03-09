@@ -56,7 +56,7 @@
                     android:layout_height="wrap_content"
                     android:textColor="@color/black"
                     android:textSize="18sp"
-                    app:name="@{carOwner}"
+                    android:text="@{carOwner.firstName + ' ' + carOwner.lastName}"
                     tools:text="Brad Gibson" />
 
                 <RelativeLayout
@@ -79,7 +79,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textColor="@color/black"
-                            app:make="@{carOwner}"
+                            android:text="@{carOwner.carModel}"
                             tools:text="BMW" />
 
                     </LinearLayout>
@@ -110,7 +110,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textColor="@color/black"
-                            app:year="@{carOwner}"
+                            android:text="@{carOwner.year}"
                             tools:text="1996" />
 
                     </LinearLayout>
@@ -141,7 +141,7 @@
                             android:layout_height="16dp"
                             android:layout_gravity="center"
                             android:textColor="@color/black"
-                            app:color="@{carOwner}"
+                            android:text="@{carOwner.carColor}"
                             tools:background="@drawable/color_bg" />
 
                     </LinearLayout>
@@ -170,7 +170,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textColor="@color/black"
-                            app:country="@{carOwner}"
+                            android:text="@{carOwner.country}"
                             tools:text="America" />
 
                     </LinearLayout>
@@ -192,7 +192,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textColor="@color/black"
-                            app:gender="@{carOwner}"
+                            android:text="@{carOwner.gender}"
                             tools:text="Female" />
 
                     </LinearLayout>
@@ -215,11 +215,11 @@
                             android:ellipsize="end"
                             android:maxLines="1"
                             android:textColor="@color/black"
-                            app:job="@{carOwner}"
+                            android:text="@{carOwner.jobTitle}"
                             tools:text="Software" />
 
                     </LinearLayout>
-                    
+
                 </RelativeLayout>
 
                 <LinearLayout
@@ -240,7 +240,7 @@
                         android:ellipsize="end"
                         android:maxLines="1"
                         android:textColor="@color/black"
-                        app:email="@{carOwner}"
+                        android:text="@{carOwner.email}"
                         tools:text="idrisaminu861@gmail.com" />
                 </LinearLayout>
 
@@ -261,7 +261,7 @@
                         android:ellipsize="end"
                         android:maxLines="1"
                         android:textColor="@color/black"
-                        app:bio="@{carOwner}"
+                        android:text="@{carOwner.bio}"
                         tools:text="gdqdbhhixhajxuhxuixhbqjxkcxjqxqkjhx hcgqwbbh hw hwbdhgb whq" />
                 </LinearLayout>
 
