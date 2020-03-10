@@ -1,14 +1,11 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
-apply plugin: "androidx.navigation.safeargs.kotlin"
+apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlinx-serialization'
+apply plugin: 'androidx.navigation.safeargs'
 
 android {
-    dataBinding {
-        enabled true
-    }
     compileSdkVersion 29
     buildToolsVersion "29.0.3"
 
@@ -20,20 +17,27 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        vectorDrawables.useSupportLibrary = true
-        multiDexEnabled true
-        compileOptions {
-            sourceCompatibility JavaVersion.VERSION_1_8
-            targetCompatibility JavaVersion.VERSION_1_8
-        }
     }
-
 
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+    }
+
+    android {
+        compileOptions {
+            sourceCompatibility = JavaVersion.VERSION_1_8
+            targetCompatibility = JavaVersion.VERSION_1_8
+        }
+        kotlinOptions {
+            jvmTarget = JavaVersion.VERSION_1_8
+        }
+    }
+
+    dataBinding {
+        enabled = true
     }
 }
 
@@ -42,64 +46,41 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'androidx.core:core-ktx:1.2.0'
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     testImplementation 'junit:junit:4.13'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
-    // Dagger2
-    api 'com.google.dagger:dagger:2.26'
-    kapt 'com.google.dagger:dagger-compiler:2.26'
+    implementation 'com.android.support:multidex:1.0.3'
 
-    // Coordinator Layout
-    implementation 'androidx.coordinatorlayout:coordinatorlayout:1.1.0'
-    implementation 'com.android.support:design:29.0.0'
-    // Recycler View
-    implementation 'com.android.support:recyclerview-v7:29.0.0'
-    // Glide
-    implementation 'com.github.bumptech.glide:glide:4.11.0'
-    kapt 'com.github.bumptech.glide:compiler:4.11.0'
+    //Test libraries
+    testImplementation 'junit:junit:4.12',
+            "com.google.truth:truth:1.0.1",
+            "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.3.0-M1"
 
-    // Lifecycle components
-    implementation "androidx.lifecycle:lifecycle-extensions:2.2.0"
-    kapt "androidx.lifecycle:lifecycle-compiler:2.2.0"
-    // ViewModel Kotlin support
-    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0"
-    // UI
-    implementation "com.google.android.material:material:1.2.0-alpha05"
-    // Testing
-    androidTestImplementation "androidx.arch.core:core-testing:2.1.0"
-    // OKHTTP
-    implementation("com.squareup.okhttp3:okhttp:4.4.0")
-    implementation("com.squareup.okhttp3:logging-interceptor:4.4.0")
-    implementation("com.squareup.okhttp3:okhttp-urlconnection:4.4.0")
-    // CoRoutines
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.3"
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.2"
-    // Navigation
+    //Timber logging library dependency
+    implementation 'com.jakewharton.timber:timber:4.7.1'
+
+    //Android Navigation Controller library dependency
     implementation 'androidx.navigation:navigation-fragment-ktx:2.2.1'
     implementation 'androidx.navigation:navigation-ui-ktx:2.2.1'
-    // Retrofit
+
+    /*Retrofit components dependency*/
     implementation 'com.squareup.retrofit2:retrofit:2.7.1'
-    // GSON
-    implementation 'com.google.code.gson:gson:2.8.6'
     implementation 'com.squareup.retrofit2:converter-gson:2.7.0'
 
-    // Serialization
+    //Kotlin serialization dependency
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation "org.jetbrains.kotlinx:kotlinx-serialization-runtime:0.14.0"
+
+    //Lifecycle dependency including livedata and viewmodel
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+
+    //Animation dependency
+    implementation 'com.airbnb.android:lottie:3.3.1'
 
     //Download manager dependency
     implementation 'com.mindorks.android:prdownloader:0.6.0'
 
     //CSV parser library
     implementation 'de.siegmar:fastcsv:1.0.3'
-
-    //Timber for Logging
-    implementation 'com.jakewharton.timber:timber:4.7.1'
-
-    // CI ImageView
-    implementation 'de.hdodenhof:circleimageview:3.1.0'
-    def multidex_version = "2.0.1" // Check this from the link
-    implementation "androidx.multidex:multidex:$multidex_version"
 }
